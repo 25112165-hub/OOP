@@ -1,0 +1,95 @@
+#Ex1.2
+#1. How many seconds are there in 42 minutes 42 seconds?
+minutes = int(input("Minutes = "))
+seconds = int(input("Seconds = "))
+total = minutes*60 + seconds
+print("Total second = ", total)
+#2. How many miles are there in 10 kilometers?
+kilometers = int(input("Kilometers = "))
+miles = kilometers/1.61
+print("Miles = ", miles)
+#3.
+kilometers = float(input("Kilometers = "))
+minutes = int(input("Minutes = "))
+seconds = int(input("Seconds = "))
+pace = (minutes*60 + seconds)/(kilometers/1.61)
+pace_minutes = int(pace//60)
+pace_seconds = int(pace%60)
+speed = (kilometers/1.61)/(minutes/60 + seconds/3600)
+print("Average pace: ", pace_minutes, "minutes", pace_seconds, "seconds per mile.")
+print("Speed: ", speed, "miles per hour.")
+
+
+#Ex2.2
+#1.
+import math
+r = float(input("Ban kinh hinh cau = "))
+v = 4/3*math.pi*r**3
+print("The tich hinh cau = ", v)
+#2.
+sach = int(input("Nhap so sach can mua : "))
+phi = sach*0.4*24.95 + 3 + 0.75*(sach-1)
+print("Tong chi phi mua sach la ", phi)
+#3.
+hour = int(input("Gio xuat phat: "))
+minute = int(input("Phut xuat phat: "))
+start = hour*3600 + minute*60
+run = 8*60 + 15 + 3*(7*60 + 12) + 8*60 + 15
+total = start + run
+h = total//3600
+m = (total%3600)/60
+print("Ve nha an sang vao ", h, "gio ", m, "phut.")
+
+
+#Ex3.3
+#1. 
+def draw1():
+    for i in range(2):
+        for j in range(2):
+            print('+', end=' ')
+            for k in range(4):
+                print('-', end=' ')
+        print('+')
+        for j in range(4):
+            for k in range(2):
+                print('|', end=' ')
+                for m in range(4):
+                    print(' ', end=' ')
+            print('|')
+    for j in range(2):
+        print('+', end=' ')
+        for k in range(4):
+            print('-', end=' ')
+    print('+')
+draw()
+#2.
+def draw2():
+    for i in range(4):
+        for j in range(4):
+            print('+', end=' ')
+            for k in range(4):
+                print('-', end=' ')
+        print('+')
+        for j in range(4):
+            for k in range(4):
+                print('|', end=' ')
+                for m in range(4):
+                    print(' ', end=' ')
+            print('|')
+    for j in range(4):
+        print('+', end=' ')
+        for k in range(4):
+            print('-', end=' ')
+    print('+')
+draw2()
+
+
+#5.1
+import time
+t = time.time()
+days = t//(24*3600)
+hours = int(t%(24*3600))//3600
+minutes = int(t%3600)//60
+seconds = int(t%60)
+print("current time: ", hours,":", minutes, ":", seconds)
+print("Days since epoch: ", days)
