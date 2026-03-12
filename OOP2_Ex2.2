@@ -1,0 +1,18 @@
+#1.
+import math
+r = float(input("Ban kinh hinh cau = "))
+v = 4/3*math.pi*r**3
+print("The tich hinh cau = ", v)
+#2.
+sach = int(input("Nhap so sach can mua : "))
+phi = sach*0.4*24.95 + 3 + 0.75*(sach-1)
+print("Tong chi phi mua sach la ", phi)
+#3.
+hour = int(input("Gio xuat phat: "))
+minute = int(input("Phut xuat phat: "))
+start = hour*3600 + minute*60
+run = 8*60 + 15 + 3*(7*60 + 12) + 8*60 + 15
+total = start + run
+h = total//3600
+m = (total%3600)/60
+print("Ve nha an sang vao ", h, "gio ", m, "phut.")
