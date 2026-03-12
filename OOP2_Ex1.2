@@ -1,0 +1,19 @@
+#1. How many seconds are there in 42 minutes 42 seconds?
+minutes = int(input("Minutes = "))
+seconds = int(input("Seconds = "))
+total = minutes*60 + seconds
+print("Total second = ", total)
+#2. How many miles are there in 10 kilometers?
+kilometers = int(input("Kilometers = "))
+miles = kilometers/1.61
+print("Miles = ", miles)
+#3.
+kilometers = float(input("Kilometers = "))
+minutes = int(input("Minutes = "))
+seconds = int(input("Seconds = "))
+pace = (minutes*60 + seconds)/(kilometers/1.61)
+pace_minutes = int(pace//60)
+pace_seconds = int(pace%60)
+speed = (kilometers/1.61)/(minutes/60 + seconds/3600)
+print("Average pace: ", pace_minutes, "minutes", pace_seconds, "seconds per mile.")
+print("Speed: ", speed, "miles per hour.")
