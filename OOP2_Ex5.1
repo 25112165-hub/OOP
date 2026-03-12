@@ -1,0 +1,8 @@
+import time
+t = time.time()
+days = t//(24*3600)
+hours = int(t%(24*3600))//3600
+minutes = int(t%3600)//60
+seconds = int(t%60)
+print("current time: ", hours,":", minutes, ":", seconds)
+print("Days since epoch: ", days)
