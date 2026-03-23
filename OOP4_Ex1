@@ -1,0 +1,43 @@
+class NhanVien:
+    def __init__(self, tenNhanVien="", luongCoBan=0, heSoLuong=0):
+        self.tenNhanVien = tenNhanVien
+        self.luongCoBan = luongCoBan
+        self.heSoLuong = heSoLuong
+    def getTen(self):
+        return self.tenNhanVien
+    def setTen(self, ten):
+        self.tenNhanVien = tenNhanVien
+    def getLuongCoBan(self):
+        return self.luongCoBan
+    def setLuongCoBan(self, lcb):
+        self.luongCoBan = luongCoBan
+    def getHeSoLuong(self):
+        return self.heSoLuong
+    def setHeSoLuong(self, hsl):
+        self.heSoLuong = heSoLuong
+    def input(self):
+        self.tenNhanVien = input("Nhập tên nhân viên: ")
+        self.luongCoBan = float(input("Nhập lương cơ bản: "))
+        self.heSoLuong = float(input("Nhập hệ số lương: "))
+    def inTTin(self):
+        print("Tên nhân viên: ", self.tenNhanVien)
+        print("Lương cơ bản: ", self.luongCoBan)
+        print("Hệ số lương: ", self.heSoLuong)
+        print("Lương: ",self.tinhLuong())
+    Luong_Max = 100000000
+    def tinhLuong(self):
+         return self.luongCoBan * self.heSoLuong
+    def tangLuong(self, tangHeSo):
+        heSoMoi = self.heSoLuong + tangHeSo
+        if(self.luongCoBan * heSoMoi > nv.Luong_Max):
+            self.heSoLuong = nv.Luong_Max / self.luongCoBan
+            print("Vượt quá lương tối đa!")
+            return False
+        else:
+            self.heSoLuong = heSoMoi
+            return True 
+nv = NhanVien()
+nv.input()
+nv.tinhLuong()
+nv.inTTin()
+nv.tangLuong(1000000)
