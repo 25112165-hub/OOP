@@ -1,0 +1,19 @@
+class LineSegment:
+    def __init__(self, *args):
+        if len(args) == 0:
+            self.__d1 = Point(8, 5)
+            self.__d2 = Point(1, 0)
+
+        elif len(args) == 2:
+            if isinstance(args[0], Point):
+                self.__d1 = args[0]
+                self.__d2 = args[1]
+
+        elif len(args) == 4:
+            self.__d1 = Point(args[0], args[1])
+            self.__d2 = Point(args[2], args[3])
+
+        elif len(args) == 1:
+            if isinstance(args[0], LineSegment):
+                self.__d1 = args[0].__d1
+                self.__d2 = args[0].__d2
