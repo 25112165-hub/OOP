@@ -1,0 +1,51 @@
+class TTin:
+    def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da):
+        self.ma_nv = ma_nv
+        self.ho_ten = ho_ten
+        self.nam_sinh = nam_sinh
+        self.gioi_tinh = gioi_tinh
+        self.dia_chi = dia_chi
+        self.hso_luong = hso_luong
+        self.luong_toi_da = luong_toi_da
+    
+    def HienThi(self):
+        print(f"Mã nhân viên: {self.ma_nv}")
+        print(f"Họ tên: {self.ho_ten}")
+        print(f"Năm sinh: {self.nam_sinh}")
+        print(f"Giới tính: {self.gioi_tinh}")
+        print(f"Địa chỉ: {self.dia_chi}")
+        print(f"Hệ số lương: {self.hso_luong}")
+        print(f"Lương tối đa: {self.luong_toi_da}")
+
+class CongTacvien(TTin):
+    def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da, thoi_han_hd, phu_cap):
+        super().__init__(ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da)
+        self.thoi_han_hd = thoi_han_hd
+        self.phu_cap = phu_cap
+
+    def HienThi(self):
+        super().HienThi()
+        print(f"Thời hạn hợp đồng: {self.thoi_han_hd}")
+        print(f"Phụ cấp lao động cộng thêm thu nhập: {self.phu_cap}")
+
+class NhanVienChinhThuc(TTin):
+    def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da, vi_tri, luong):
+        super().__init__(ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da)
+        self.vi_tri = vi_tri
+        self.luong = luong
+    
+    def HienThi(self):
+        super().HienThi()
+        print(f"Vị trí công việc: {self.vi_tri}")
+        print(f"Lương: {self.luong}")
+
+class TruongPhong(TTin):
+    def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da, ngay_quan_ly, phu_cap):
+        super().__init__(ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da)
+        self.ngay_quan_ly = ngay_quan_ly
+        self.phu_cap = phu_cap
+
+    def HienThi(self):
+        super().HienThi()
+        print(f"Ngày bắt đầu quản lý: {self.ngay_quan_ly}")
+        print(f"Phụ cấp quản lý cộng thêm thu nhập: {self.phu_cap}")
