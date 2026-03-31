@@ -4,7 +4,7 @@ class HangHoa:
         self.ten_hang = ten_hang
         self.nha_sx = nha_sx
         self.gia = gia
-    def inTTin1(self):
+    def HienThi(self):
         print(f"1. Mã hàng: {self.ma_hang}")
         print(f"2. Tên hàng: {self.ten_hang}")
         print(f"3. Nhà sản xuất: {self.nha_sx}")
@@ -16,7 +16,8 @@ class HangDienMay(HangHoa):
         self.tg_baohanh = tg_baohanh
         self.dien_ap = dien_ap
         self.cong_suat = cong_suat
-    def inTTin2(self):
+    def HienThi(self):
+        super().HienThi()
         print(f"5. Thời gian bảo hành: {self.tg_baohanh}")
         print(f"6. Điện áp: {self.dien_ap}")
         print(f"7. Công suất: {self.cong_suat}")
@@ -26,7 +27,8 @@ class HangSanhSu(HangHoa):
     def __init__(self, ma_hang, ten_hang, nha_sx, gia, loai_nguyenlieu):
         super().__init__(ma_hang, ten_hang, nha_sx, gia)
         self.loai_nguyenlieu = loai_nguyenlieu
-    def inTTin3(self):
+    def HienThi(self):
+        super().HienThi()
         print(f"5. Loại nguyên liệu: {self.loai_nguyenlieu}")
         print("-----------------------------")
 
@@ -35,19 +37,17 @@ class HangThucPham(HangHoa):
         super().__init__(ma_hang, ten_hang, nha_sx, gia)
         self.ngay_sx = ngay_sx
         self.ngay_hethan = ngay_hethan
-    def inTTin4(self):
+    def HienThi(self):
+        super().HienThi()
         print(f"5. Ngày sản xuất: {self.ngay_sx}")
         print(f"6. Ngày hết hạn: {self.ngay_hethan}")
         print("-----------------------------")
 
 TV = HangDienMay("DKA-04000G", "Quạt điều hòa", "Daikiosan", "2.590.000", "1 năm", "220V", "110W")
-TV.inTTin1()
-TV.inTTin2()
+TV.HienThi()
 
 Lohoa = HangSanhSu("LHS32", "Lọ hoa dánh tỏi", "Bát Tràng", "1.125.000", "gốm")
-Lohoa.inTTin1()
-Lohoa.inTTin3()
+Lohoa.HienThi()
 
 Sua = HangThucPham("SHT2411", "Thùng 12 hộp sữa tươi tiệt trùng 1 lít", "Vinamilk", "407.000", "31/3/2026", "31/9/2026")
-Sua.inTTin1()
-Sua.inTTin4()
+Sua.HienThi()
