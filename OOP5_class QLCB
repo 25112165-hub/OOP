@@ -1,0 +1,125 @@
+class CanBo:
+    def __init__(self, ho_ten, tuoi, gioi_tinh, dia_chi):
+        self.ho_ten = ho_ten
+        self.tuoi = tuoi
+        self.gioi_tinh = gioi_tinh
+        self.dia_chi = dia_chi
+
+    def loai_cb(self):
+        return "Cán bộ"
+
+    def HienThi(self):
+        print(f"[{self.loai_cb()}]")
+        print(f"Họ tên: {self.ho_ten}")
+        print(f"Tuổi: {self.tuoi}")
+        print(f"Giới tính: {self.gioi_tinh}")
+        print(f"Địa chỉ: {self.dia_chi}")
+
+class CongNhan(CanBo):
+    def __init__(self, ho_ten, tuoi, gioi_tinh, dia_chi, bac):
+        super().__init__(ho_ten, tuoi, gioi_tinh, dia_chi)
+        if not (1 <= bac <= 10):
+            raise ValueError("Bậc 1-10!")
+        self.bac = bac
+        
+    def loai_cb(self):
+        return "Công nhân"
+
+    def HienThi(self):
+        super().HienThi()
+        print(f"Bậc: {self.bac}")
+
+class KySu(CanBo):
+    def __init__(self, ho_ten, tuoi, gioi_tinh, dia_chi, nganh):
+        super().__init__(ho_ten, tuoi, gioi_tinh, dia_chi)
+        self.nganh = nganh
+
+    def loai_cb(self):
+        return "Kỹ sư"
+    def HienThi(self):
+        super().HienThi()
+        print(f"Ngành đào tạo: {self.nganh}")
+
+class NhanVien(CanBo):
+    def __init__(self, ho_ten, tuoi, gioi_tinh, dia_chi, cong_viec):
+        super().__init__(ho_ten, tuoi, gioi_tinh, dia_chi)
+        self.cong_viec = cong_viec
+
+    def loai_cb(self):
+        return "Nhân viên"
+    def HienThi(self):
+        super().HienThi()
+        print(f"Công việc: {self.cong_viec}")
+    
+class QLCB:
+    def __init__(self):
+        self.__ds_can_bo = []
+
+    def them_moi(self):
+        print("\n── THÊM CÁN BỘ MỚI ──")
+        print("  1. Công nhân")
+        print("  2. Kỹ sư")
+        print("  3. Nhân viên")
+        loai = input("  Chọn loại (1/2/3): ")
+        ho_ten    = input("Họ tên: ")
+        tuoi      = int(input("Tuổi: "))
+        gioi_tinh = input("Giới tính: ")
+        dia_chi   = input("Địa chỉ: ")
+
+        if loai == "1":
+            bac = int(input("Bậc (1-10): "))
+            cb = CongNhan(ho_ten, tuoi, gioi_tinh, dia_chi, bac)
+        elif loai == "2":
+            nganh = input("Ngành đào tạo: ")
+            cb = KySu(ho_ten, tuoi, gioi_tinh, dia_chi, nganh)
+        elif loai == "3":
+            cv = input("Công việc: ")
+            cb = NhanVien(ho_ten, tuoi, gioi_tinh, dia_chi, cong_viec)
+        else:
+            print("Không hợp lệ!")
+            return
+        self.__ds_can_bo.append(cb)
+
+    def tim_kiem(self):
+        tu_khoa = input("Nhập họ tên cần tìm: ")
+        ket_qua = [cb for cb in self.__ds_can_bo
+                   if tu_khoa in cb.ho_ten]
+        if not ket_qua:
+            print("Không tìm thấy!")
+        else:
+            for cb in ket_qua:
+                print()
+                cb.hien_thi()
+
+    def hien_thi_ds(self):
+        if not self.__ds_can_bo:
+            print("Danh sách trống!")
+            return
+        print(f"DANH SÁCH CÁN BỘ ({len(self.__ds_can_bo)} người:)")
+        for i, cb in enumerate(self.__ds_can_bo, 1):
+            print(f"\n--- #{i} ---")
+            cb.hien_thi()
+
+    def lua_chon(self):
+        while True:
+            print("\n=== QUẢN LÝ CÁN BỘ ===")
+            print("  1. Thêm mới cán bộ.")
+            print("  2. Tìm kiếm cán bộ theo họ tên.")
+            print("  3. Hiển thị danh sách cán bộ.")
+            print("  4. Thoát.")
+
+            chon = input("Lựa chọn: ")
+
+            if   chon == "1": 
+                self.them_moi()
+            elif chon == "2": 
+                self.tim_kiem()
+            elif chon == "3": 
+                self.hien_thi_ds()
+            elif chon == "4":
+                break
+            else:
+                print("Lựa chọn không hợp lệ!")
+
+ql = QLCB()
+ql.lua_chon()
