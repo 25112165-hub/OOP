@@ -35,6 +35,7 @@ class CongTacVien(TTin):
         super().HienThi()
         print(f"Thời hạn hợp đồng: {self.thoi_han_hd}")
         print(f"Phụ cấp lao động cộng thêm thu nhập: {self.phu_cap} VNĐ")
+        print("-------------------------------------")
 
 class NhanVienChinhThuc(TTin):
     def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da, vi_tri):
@@ -44,6 +45,7 @@ class NhanVienChinhThuc(TTin):
     def HienThi(self):
         super().HienThi()
         print(f"Vị trí công việc: {self.vi_tri}")
+        print("-------------------------------------")
 
 class TruongPhong(TTin):
     def __init__(self, ma_nv, ho_ten, nam_sinh, gioi_tinh, dia_chi, hso_luong, luong_toi_da, ngay_quan_ly, phu_cap_ql):
@@ -58,6 +60,7 @@ class TruongPhong(TTin):
         super().HienThi()
         print(f"Ngày bắt đầu quản lý: {self.ngay_quan_ly}")
         print(f"Phụ cấp quản lý cộng thêm thu nhập: {self.phu_cap_ql} VNĐ")
+        print("-------------------------------------")
 
 ctv = CongTacVien("CTV2411", "A", "2000", "Nam", "Hà Nội", 1.5, 20000000, "6 tháng", 1500000)
 ctv.HienThi()
