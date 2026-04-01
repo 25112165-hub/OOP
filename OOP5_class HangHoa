@@ -8,7 +8,7 @@ class HangHoa:
         print(f"1. Mã hàng: {self.ma_hang}")
         print(f"2. Tên hàng: {self.ten_hang}")
         print(f"3. Nhà sản xuất: {self.nha_sx}")
-        print(f"4. Giá: {self.gia}")
+        print(f"4. Giá: {self.gia} VNĐ")
 
 class HangDienMay(HangHoa):
     def __init__(self, ma_hang, ten_hang, nha_sx, gia, tg_baohanh, dien_ap, cong_suat):
@@ -18,9 +18,9 @@ class HangDienMay(HangHoa):
         self.cong_suat = cong_suat
     def HienThi(self):
         super().HienThi()
-        print(f"5. Thời gian bảo hành: {self.tg_baohanh}")
-        print(f"6. Điện áp: {self.dien_ap}")
-        print(f"7. Công suất: {self.cong_suat}")
+        print(f"5. Thời gian bảo hành: {self.tg_baohanh} tháng")
+        print(f"6. Điện áp: {self.dien_ap} V")
+        print(f"7. Công suất: {self.cong_suat} W")
         print("-----------------------------")
     
 class HangSanhSu(HangHoa):
@@ -43,7 +43,7 @@ class HangThucPham(HangHoa):
         print(f"6. Ngày hết hạn: {self.ngay_hethan}")
         print("-----------------------------")
 
-TV = HangDienMay("DKA-04000G", "Quạt điều hòa", "Daikiosan", "2.590.000", "1 năm", "220V", "110W")
+TV = HangDienMay("DKA-04000G", "Quạt điều hòa", "Daikiosan", "2.590.000", "12", "220", "110")
 TV.HienThi()
 
 Lohoa = HangSanhSu("LHS32", "Lọ hoa dánh tỏi", "Bát Tràng", "1.125.000", "gốm")
