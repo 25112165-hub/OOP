@@ -1,0 +1,92 @@
+from abc import ABC, abstractmethod
+
+class HangHoa(ABC):
+    def __init__(self, ma_hang, ten_hang, nha_sx, gia):
+        self.__ma_hang = ma_hang
+        self.__ten_hang = ten_hang
+        self.__nha_sx = nha_sx
+        self.__gia = gia
+    
+    @property
+    def ma_hang(self):
+        return self.__ma_hang
+
+    @property
+    def ten_hang(self):
+        return self.__ten_hang
+
+    @property
+    def nha_sx(self):
+        return self.__nha_sx
+
+    @property
+    def gia(self):
+        return self.__gia
+
+    @abstractmethod
+    def loai_hang(self):
+        pass
+
+    def inTTin(self):
+        return(f"[{self.loai_hang()}] Mã: {self.__ma_hang} | Tên: {self.__ten_hang} | "
+               f"Nhà sản xuất: {self.__nha_sx} | Giá: {self.__gia}đ")
+
+    def __str__(self):
+        return self.inTTin()
+
+    def __eq__(self, other):
+        if not isinstance(other, HangHoa): return NotImplemented
+        return self.__ma_hang == other.__ma_hang 
+    
+    def __lt__(self, other):
+        return self.__gia < other.__gia
+
+class HangDienMay(HangHoa):
+    def __init__(self, ma_hang, ten_hang, nha_sx, gia, tg_baohanh, dien_ap, cong_suat):
+        super().__init__(ma_hang, ten_hang, nha_sx, gia)
+        self.__tg_baohanh = tg_baohanh
+        self.__dien_ap = dien_ap
+        self.__cong_suat = cong_suat
+
+    def loai_hang(self):
+        return "Điện máy"
+    
+    def inTTin(self):
+        return(f"{super().inTTin()} | Bảo hành: {self.__tg_baohanh} tháng | " 
+               f"Điện áp: {self.__dien_ap}V | Công suất: {self.__cong_suat}W.")
+    
+class HangSanhSu(HangHoa):
+    def __init__(self, ma_hang, ten_hang, nha_sx, gia, loai_nguyenlieu):
+        super().__init__(ma_hang, ten_hang, nha_sx, gia)
+        self.__loai_nguyenlieu = loai_nguyenlieu
+
+    def loai_hang(self):
+        return "Hàng sành sứ"
+
+    def inTTin(self):
+        return(f"{super().inTTin()} | Loại nguyên liệu: {self.__loai_nguyenlieu}.")
+
+class HangThucPham(HangHoa):
+    def __init__(self, ma_hang, ten_hang, nha_sx, gia, ngay_sx, ngay_hethan):
+        super().__init__(ma_hang, ten_hang, nha_sx, gia)
+        self.__ngay_sx = ngay_sx
+        self.__ngay_hethan = ngay_hethan
+
+    def loai_hang(self):
+        return "Hàng thực phẩm"
+
+    def inTTin(self):
+        return(f"{super().inTTin()} | Ngày sản xuất: {self.__ngay_sx} | Ngày hết hạn: {self.__ngay_hethan}.")
+
+dm = HangDienMay("DKA-04000G", "Quạt điều hòa", "Daikiosan", "2.590.000", "12", "220", "110")
+ss = HangSanhSu("LHS32", "Lọ hoa dáng tỏi", "Bát Tràng", "1.125.000", "gốm")
+tp = HangThucPham("SHT2411", "Thùng 12 hộp sữa tươi tiệt trùng 1 lít", "Vinamilk", "407.000", "31/3/2026", "31/9/2026")
+
+print("--- Sản phẩm ---")
+kho = [dm, ss, tp]
+for sp in kho:
+    print(sp)
+
+print("--- Sắp xếp theo giá ---")
+for sp in sorted(kho):
+    print(f"{sp.gia}đ | {sp.ten_hang}")
