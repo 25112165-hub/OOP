@@ -46,7 +46,7 @@ class HangThucPham(HangHoa):
 TV = HangDienMay("DKA-04000G", "Quạt điều hòa", "Daikiosan", "2.590.000", "12", "220", "110")
 TV.HienThi()
 
-Lohoa = HangSanhSu("LHS32", "Lọ hoa dánh tỏi", "Bát Tràng", "1.125.000", "gốm")
+Lohoa = HangSanhSu("LHS32", "Lọ hoa dáng tỏi", "Bát Tràng", "1.125.000", "gốm")
 Lohoa.HienThi()
 
 Sua = HangThucPham("SHT2411", "Thùng 12 hộp sữa tươi tiệt trùng 1 lít", "Vinamilk", "407.000", "31/3/2026", "31/9/2026")
